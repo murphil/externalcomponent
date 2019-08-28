@@ -1,5 +1,5 @@
-export default async function externalComponent(url) {
-    const name = url.split('/').reverse()[0].match(/^(.*?)\.umd/)[1];
+export default function externalComponent(baseUrl) {
+  return async function (name) {
     if (window[name]) return window[name];
 
     window[name] = new Promise((resolve, reject) => {
@@ -9,11 +9,13 @@ export default async function externalComponent(url) {
         resolve(window[name]);
       });
       script.addEventListener('error', () => {
-        reject(new Error(`Error loading ${url}`));
+        reject(new Error(`Error loading ${name}`));
       });
-      script.src = url;
+      script.src = `${baseUrl}/${id.split('.')[0]}/${id}.umd.min.js`;
       document.head.appendChild(script);
     });
 
     return window[name];
   }
+}
+
