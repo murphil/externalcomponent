@@ -1,4 +1,4 @@
-function loadExt(baseUrl, name) {
+export function loadExt(baseUrl, name) {
   if (window[name]) return window[name];
 
   window[name] = new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ function loadExt(baseUrl, name) {
   return window[name];
 }
 
-export default function externalComponent(baseUrl) {
+export function externalComponent(baseUrl) {
   return function (name) {
     return () => loadExt(baseUrl, name)
   }
