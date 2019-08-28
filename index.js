@@ -12,7 +12,7 @@ export default function externalComponent(baseUrl) {
         script.addEventListener('error', () => {
           reject(new Error(`Error loading ${name}`));
         });
-        script.src = `${baseUrl}/${id.split('.')[0]}/${id}.umd.min.js`;
+        script.src = `${baseUrl}/${name.split('.')[0]}/${name}.umd.min.js`;
         document.head.appendChild(script);
       });
 
