@@ -1,4 +1,4 @@
-export default function (baseUrl, name) {
+module.exports = function (baseUrl, name) {
   if (window[name]) return window[name];
 
   window[name] = new Promise((resolve, reject) => {
