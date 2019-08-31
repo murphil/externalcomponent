@@ -1,3 +1,6 @@
+[![Build Status](http://172.178.1.204:9877/api/badges/nash/externalComponent/status.svg)](http://172.178.1.204:9877/nash/externalComponent)
+
+
 in entrypoint file (App.vue etc.)
 
 ```js
