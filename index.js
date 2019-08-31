@@ -1,11 +1,11 @@
 module.exports = function (baseUrl, name) {
-  if (window[name]) return window[name];
+  if (this[name]) return this[name];
 
-  window[name] = new Promise((resolve, reject) => {
+  this[name] = new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.async = true;
     script.addEventListener('load', () => {
-      resolve(window[name]);
+      resolve(this[name]);
     });
     script.addEventListener('error', () => {
       reject(new Error(`Error loading ${name}`));
@@ -14,6 +14,6 @@ module.exports = function (baseUrl, name) {
     document.head.appendChild(script);
   });
 
-  return window[name];
+  return this[name];
 }
 
