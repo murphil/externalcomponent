@@ -13,4 +13,4 @@ steps:
   image: nnurphy/deb
   pull: never
   commands:
-  - pwd
+  - ls
