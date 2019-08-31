@@ -1,0 +1,19 @@
+kind: pipeline
+name: 注册组件
+
+clone:
+  depth: 1
+
+concurrency:
+  limit: 1
+
+trigger:
+  branch:
+  - master
+
+steps:
+- name: "写入版本信息到 .version.json"
+  image: nnurphy/deb
+  pull: never
+  commands:
+  - 'echo "{\"date\": \"`date +"%Y-%m-%d %H:%M:%S"`\",\"title\":\"`git log -1 --pretty=%B`\"}" > .version.json'
