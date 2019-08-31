@@ -1,8 +1,5 @@
 kind: pipeline
-name: 注册组件
-
-clone:
-  depth: 1
+name: 测试
 
 concurrency:
   limit: 1
